@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content%}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<form method="POST" action="">
+  {% csrf_token %}
+  <div class="form-group">
+    <h2 style="color:yellow;text-align:center;">Personality Test</h2>
+    <h4 style="color:yellow;text-align:center;">Please, Define yourself in more than 50 character.<br>Try to use Adjective.</h4>
+  <textarea class="form-control" id="exampleFormControlTextarea1" name="text1" rows="8"></textarea>
+  <label><ul><li>Please Enter the text not less than 50 character.</li></ul></label>
+  
+  <br><center>
+  <button class="btn" style="color: white; background-color: #fd5e14;" type="submit" id="submit"> Submit </button>
+  </center>
+</div>
+</form>
+<div>
+<br>
+<div class="container">
+    {% if messages %}
+    {% for message in messages %}
+      <div id="a1" class="alert alert-{{message.tags}}">{{message}}</div>
+    {% endfor %}
+  {% endif %}
+</div>
+{% endblock %}

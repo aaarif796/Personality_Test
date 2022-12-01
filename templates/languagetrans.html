@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content%}
+<form method="POST" action="">
+  {% csrf_token %}
+  <div class="form-group">
+    <h2 style="color:yellow;text-align:center;">Language Translation from English to Kannada</h2>
+  <textarea class="form-control" id="exampleFormControlTextarea1" name="text1" rows="8"></textarea>
+  <label><ul><li>Please Enter the text not less than 5 character.</li></ul></label>
+  <br><center>
+  <button class="btn" style="color: white; background-color: #fd5e14;" type="submit" id="submit"> Translate </button>
+  </center>
+  
+</div>
+</form>
+{% for message in messages%}
+  {% if message.tags == 'success' %}
+  <div id="a1" class="alert alert-{{message.tags}}">{{message}}</div>
+  {% endif %}
+{% endfor %}
+{% endblock %}

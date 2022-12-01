@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content%}
+<form method="POST" action="">
+  {% csrf_token %}
+  <div class="form-group">
+    <h2 style="color:yellow;text-align:center;">Sentiment Analysis</h2>
+    <h4 style="color:yellow;text-align:center;">Please, Write your opinion.</h4>
+  <textarea class="form-control" id="exampleFormControlTextarea1" name="text1" rows="8"></textarea>
+  <label><ul><li>Please Enter the text not less than 20 character.</li></ul></label>
+  <br><center>
+  <button class="btn" style="color: white; background-color: #fd5e14;" type="submit" id="submit"> Submit </button>
+  </center>
+  
+</div>
+</form>
+{% for message in messages%}
+  {% if message.tags == 'success' %}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+      var m="{{message}}";
+      swal("Status",m,"success")
+    </script>
+  {% else %}
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script>
+    var m="{{message}}";
+    swal("Perfect",m,"error")
+  </script>
+  {% endif %}
+{% endfor %}
+{% endblock %}
